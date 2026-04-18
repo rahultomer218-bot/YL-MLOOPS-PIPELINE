@@ -7,6 +7,10 @@ stages:
       hash: md5
       md5: 1af6b01363fd65c37e878cadc464d639
       size: 9667
+    params:
+      params.yaml:
+        data_ingestion.random_state: 42
+        data_ingestion.test_size: 0.2
     outs:
     - path: artifacts/test.csv
       hash: md5
@@ -31,6 +35,9 @@ stages:
       hash: md5
       md5: 3aed05e195998f92c628e3f6352fe9d2
       size: 15836
+    params:
+      params.yaml:
+        preprocessing.contamination: 0.05
     outs:
     - path: artifacts/test_processed.csv
       hash: md5
@@ -55,6 +62,9 @@ stages:
       hash: md5
       md5: f493f821024a6eb12d2528047f3d5e3d
       size: 13094
+    params:
+      params.yaml:
+        feature_engineering.scaling_method: standard
     outs:
     - path: feature_store/test_engineered.csv
       hash: md5
@@ -79,6 +89,10 @@ stages:
       hash: md5
       md5: b398be5d464e2ae6a3e3c937f4b827b1
       size: 13460
+    params:
+      params.yaml:
+        model_training.max_depth: 10
+        model_training.n_estimators: 100
     outs:
     - path: models/feature_importances.csv
       hash: md5

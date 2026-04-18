@@ -3,6 +3,9 @@ stages:
     cmd: python src/data_ingestion.py
     deps:
       - src/data_ingestion.py
+    params:
+      - data_ingestion.test_size
+      - data_ingestion.random_state
     outs:
       - artifacts/test.csv
       - artifacts/train.csv
@@ -13,6 +16,8 @@ stages:
       - src/preprocessing.py
       - artifacts/test.csv
       - artifacts/train.csv
+    params:
+      - preprocessing.contamination
     outs:
       - artifacts/test_processed.csv
       - artifacts/train_processed.csv
@@ -23,6 +28,8 @@ stages:
       - src/featureengineering.py
       - artifacts/test_processed.csv
       - artifacts/train_processed.csv
+    params:
+      - feature_engineering.scaling_method
     outs:
       - feature_store/test_engineered.csv
       - feature_store/train_engineered.csv
@@ -33,6 +40,9 @@ stages:
       - src/modeltraining.py
       - feature_store/test_engineered.csv
       - feature_store/train_engineered.csv
+    params:
+      - model_training.n_estimators
+      - model_training.max_depth
     outs:
       - models/random_forest_model.pkl
       - models/feature_importances.csv
@@ -43,5 +53,3 @@ stages:
       - src/modelevaluation.py
       - models/random_forest_model.pkl
       - feature_store/test_engineered.csv
-    # If this script produces a metrics file (e.g. scores.json), 
-    # add it to 'outs' or 'metrics' here.
