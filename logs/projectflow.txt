@@ -1,0 +1,4 @@
+Building Pipeline
+Create a Gitub repo and clone it in local ( Add Experiments )
+Add data, models, reports, directories to  .gitignore files.
+Now git add, commit, push

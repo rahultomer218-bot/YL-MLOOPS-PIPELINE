@@ -1,0 +1,47 @@
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+      - src/data_ingestion.py
+    outs:
+      - artifacts/test.csv
+      - artifacts/train.csv
+
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+      - src/preprocessing.py
+      - artifacts/test.csv
+      - artifacts/train.csv
+    outs:
+      - artifacts/test_processed.csv
+      - artifacts/train_processed.csv
+
+  feature_engineering:
+    cmd: python src/featureengineering.py
+    deps:
+      - src/featureengineering.py
+      - artifacts/test_processed.csv
+      - artifacts/train_processed.csv
+    outs:
+      - feature_store/test_engineered.csv
+      - feature_store/train_engineered.csv
+
+  model_training:
+    cmd: python src/modeltraining.py
+    deps:
+      - src/modeltraining.py
+      - feature_store/test_engineered.csv
+      - feature_store/train_engineered.csv
+    outs:
+      - models/random_forest_model.pkl
+      - models/feature_importances.csv
+
+  model_evaluation:
+    cmd: python src/modelevaluation.py
+    deps:
+      - src/modelevaluation.py
+      - models/random_forest_model.pkl
+      - feature_store/test_engineered.csv
+    # If this script produces a metrics file (e.g. scores.json), 
+    # add it to 'outs' or 'metrics' here.
