@@ -2,3 +2,19 @@ Building Pipeline
 Create a Gitub repo and clone it in local ( Add Experiments )
 Add data, models, reports, directories to  .gitignore files.
 Now git add, commit, push
+create a dvc.yaml file and add stages to it 
+dvc init the do dvc repro to test the pipeline automation (check dvc dag)
+Now git add. commit,pushv
+
+Setting up the dvc pipeline without param
+create dvc.yaml file 
+dvc init then dvc repro to test the pipeline automation.
+dvc dag
+now git add . git commit -m , git pust origin main
+
+
+
+setting up the dvc pipeline with params
+create params.yaml file
+add the param setup mentioned below
+

@@ -91,7 +91,7 @@ stages:
       size: 13460
     params:
       params.yaml:
-        model_training.max_depth: 10
+        model_training.max_depth: 25
         model_training.n_estimators: 100
     outs:
     - path: models/feature_importances.csv

@@ -6,10 +6,10 @@ preprocessing:
   contamination: 0.05
 
 feature_engineering:
-  scaling_method: "standard"
+  scaling_method: standard
   max_features: 50
 
 model_training:
   n_estimators: 100
-  max_depth: 10
+  max_depth: 25
   random_state: 42
